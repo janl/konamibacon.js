@@ -12,11 +12,26 @@
     position: "fixed",
     left: "0px",
     top: "0px",
-    "background-color": "#F00",
+    overflow: "wrap"
   });
   $("konamibacon").parentNode.appendChild(canvas);
   //   create coins
-  //   add behaviour
+  function create_coin() {
+    var coin = document.createElement("span");
+    // css(coin, {
+    //   
+    // });
+    coin.innerHTML = " *";
+    //   add behaviour
+    coin.onmouseover = function() {
+      
+    }
+    return coin;
+  }
+  for(var idx = 0; idx < 3000; idx++) {
+    // TODO: until screen full
+    canvas.appendChild(create_coin());
+  }
   // make crockford mouse follow
 })();
 

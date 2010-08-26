@@ -206,5 +206,4 @@
   var k = new Konami();
   k.code = brrrrring;
   k.load();
-  brrrrring();
 })();

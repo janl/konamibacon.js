@@ -18,6 +18,11 @@
   });
   $("konamibacon").parentNode.appendChild(canvas);
   //   create coins
+
+  var audios = [];
+  for(var idx = 0; idx < 10; idx++) {
+    audios[idx] = new Audio("smw_coin.mp3");
+  }
   function create_coin(cords) {
     // var cointainer = document.createElement("div");
     var coin = document.createElement("img");
@@ -31,7 +36,9 @@
       top: cords.top + "px",
       left: cords.left + "px",
     });
-    coin.onmouseover = function(idx) {
+    var idx = cords.idx;
+    coin.onmouseover = coin.onmouseout = function() {
+      audios[idx % 10].play();
       if(coin.className == "running") { return; }
       coin.className = "running";
       emile(coin, "top:-40px", {
@@ -67,7 +74,21 @@
   while(cords = place_coin(cords)) {
     canvas.appendChild(create_coin(cords));
   }
-  // make crockford mouse follow
+  //make crockford mouse follow
+  var doug = document.createElement("img");
+  css(doug, {
+    position:"absolute",
+    display:"none"
+  });
+  doug.src = "konamibacon_crockford.png";
+  window.onmousemove = function(e) {
+    css(doug, {
+      display: "block",
+      left: e.clientX,
+      top: e.clientY
+    });
+  }
+  canvas.appendChild(doug);
 })();
 
 // <div id="konami">

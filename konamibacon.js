@@ -15,6 +15,7 @@
     // launch fullscreen layer
     var canvas = document.createElement("div");
     css(canvas, {
+      "z-index": "9999",
       width: "100%",
       height: "100%",
       position: "fixed",
